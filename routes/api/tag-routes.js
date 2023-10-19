@@ -31,11 +31,8 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-// find a single tag by its `id`
-// be sure to include its associated Product data
 
 router.post('/', async (req, res) => {
-  // create a new tag
   try {
     const tag = await Tag.create(req.body);
     res.status(200).json(tag);
@@ -45,7 +42,6 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  // update a tag's name by its `id` value
   try {
     const [affectedRows] = await Tag.update(
       { tag_name: req.body.tag_name }, 
@@ -66,7 +62,6 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  // delete on tag by its `id` value
   try {
     const deletedTag = await Tag.destroy({
       where: { id: req.params.id },
